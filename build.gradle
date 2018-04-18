@@ -1,0 +1,41 @@
+buildscript {
+    dependencies {
+        classpath "org.junit.platform:junit-platform-gradle-plugin:1.1.0"
+    }
+}
+
+plugins {
+    id "org.jetbrains.kotlin.jvm" version "1.2.31"
+}
+
+apply plugin: 'org.junit.platform.gradle.plugin'
+
+apply plugin: 'application'
+
+
+
+sourceSets {
+    main.kotlin.srcDirs += 'main/src/kotlin'
+    main.java.srcDirs += 'main/src/java'
+}
+
+mainClassName = "MainKt"
+
+
+repositories {
+    maven { url "http://dl.bintray.com/jetbrains/spek" }
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.21'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:1.2.31"
+    testCompile 'io.kotlintest:kotlintest-runner-junit5:3.0.0'
+    testCompile 'junit:junit:4.12'
+    // testCompile 'io.kotlintest:kotlintest-runner-junit5:3.0.0'
+    // testCompile 'org.jetbrains.spek:spek-api:1.1.5'
+    // testRuntime 'org.jetbrains.spek:spek-junit-platform-engine:1.1.5'
+    // testCompile 'org.amshove.kluent:kluent:1.36'
+}
+
